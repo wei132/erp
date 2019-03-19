@@ -7,7 +7,7 @@
 <meta http-equiv="Pragma" CONTENT="no-cache"> 
 <meta http-equiv="Cache-Control" CONTENT="no-cache"> 
 <meta http-equiv="Expires" CONTENT="0"> 
-<title>Ö÷Ò³</title>
+<title>ä¸»é¡µ</title>
 <link href="css/globle.css" rel="stylesheet" type="text/css" />
 <link href="css/<%= userskin() %>.css" rel="stylesheet" type="text/css" />
 <style>
@@ -27,53 +27,53 @@ body{ color:#333333}
 <body id="bodyc">
 <%
 openconn()
-ztdate=DateAdd("d",-1,now()) 'µÃµ½×òÌìµÄÈÕÆÚ
+ztdate=DateAdd("d",-1,now()) 'å¾—åˆ°æ˜¨å¤©çš„æ—¥æœŸ
 
-year_str=cstr(year(now()))	'Ä¬ÈÏ°´µ±Ç°Äê·İÀ´ÏÔÊ¾
-month_str=cstr(month(now()))	'Ä¬ÈÏ°´µ±Ç°Äê·İ¡¢µ±Ç°ÔÂ·İÀ´ÏÔÊ¾¡£±ØĞëÊÇÁ½Î»²ÅĞĞ¡£Èç4ÔÂ£¬Ğ´³É04
-todayn=conn.execute("SELECT count(0) FROM ÏúÊÛ¶©µ¥ WHERE Year([ÏÂµ¥ÈÕÆÚ])="&year(now())&" and month([ÏÂµ¥ÈÕÆÚ])="&month(now())&" and day([ÏÂµ¥ÈÕÆÚ])="&day(now())&" "&yh&" ")(0)
-yedayn=conn.execute("SELECT count(0) FROM ÏúÊÛ¶©µ¥ WHERE Year([ÏÂµ¥ÈÕÆÚ])="&year(ztdate)&" and month([ÏÂµ¥ÈÕÆÚ])="&month(ztdate)&" and day([ÏÂµ¥ÈÕÆÚ])="&day(ztdate)&" "&yh&" ")(0)
+year_str=cstr(year(now()))	'é»˜è®¤æŒ‰å½“å‰å¹´ä»½æ¥æ˜¾ç¤º
+month_str=cstr(month(now()))	'é»˜è®¤æŒ‰å½“å‰å¹´ä»½ã€å½“å‰æœˆä»½æ¥æ˜¾ç¤ºã€‚å¿…é¡»æ˜¯ä¸¤ä½æ‰è¡Œã€‚å¦‚4æœˆï¼Œå†™æˆ04
+todayn=conn.execute("SELECT count(0) FROM é”€å”®è®¢å• WHERE Year([ä¸‹å•æ—¥æœŸ])="&year(now())&" and month([ä¸‹å•æ—¥æœŸ])="&month(now())&" and day([ä¸‹å•æ—¥æœŸ])="&day(now())&" "&yh&" ")(0)
+yedayn=conn.execute("SELECT count(0) FROM é”€å”®è®¢å• WHERE Year([ä¸‹å•æ—¥æœŸ])="&year(ztdate)&" and month([ä¸‹å•æ—¥æœŸ])="&month(ztdate)&" and day([ä¸‹å•æ—¥æœŸ])="&day(ztdate)&" "&yh&" ")(0)
 %>
 
 <div class="aboutbar them_c">
 <table style="width:100%"><tr>
-<td align="left" style="padding-right:25px;"><span>È«²¿ÓÃ»§ ½ñÈÕ×Ü¶©µ¥Êı£º<%= todayn %> ¸ö£» ×òÈÕ×Ü¶©µ¥Êı£º<%= yedayn %> ¸ö</span></td>
+<td align="left" style="padding-right:25px;"><span>å…¨éƒ¨ç”¨æˆ· ä»Šæ—¥æ€»è®¢å•æ•°ï¼š<%= todayn %> ä¸ªï¼› æ˜¨æ—¥æ€»è®¢å•æ•°ï¼š<%= yedayn %> ä¸ª</span></td>
 <td align="right" style="padding-right:10px">
 <span style="font-size:12px;font-weight:normal"><script language="javascript" src="js/today.js"></script></span>
 </td>
 </tr></table>
 </div>
-
+<hr>
 <div class="indexstate">
 <table class="conf_table">
-<tr><td><strong class="them_c">½ñÈÕ¶©µ¥ÏêÏ¸</strong></td></tr>
+<tr><td><strong class="them_c">ä»Šæ—¥è®¢å•è¯¦ç»†</strong></td></tr>
 <tr><td valign="top" style="padding-right:0px">
 <%
-sql="SELECT (select µêÆÌÃû³Æ from µêÆÌÃû³Æ where id=ÏúÊÛ¶©µ¥.µêÆÌ) as µêÆÌ, count(0) FROM ÏúÊÛ¶©µ¥ WHERE Year([ÏÂµ¥ÈÕÆÚ])="&year(now())&" and month([ÏÂµ¥ÈÕÆÚ])="&month(now())&" and day([ÏÂµ¥ÈÕÆÚ])="&day(now())&"  "&yh&"  GROUP BY µêÆÌ"
+sql="SELECT (select åº—é“ºåç§° from åº—é“ºåç§° where id=é”€å”®è®¢å•.åº—é“º) as åº—é“º, count(0) FROM é”€å”®è®¢å• WHERE Year([ä¸‹å•æ—¥æœŸ])="&year(now())&" and month([ä¸‹å•æ—¥æœŸ])="&month(now())&" and day([ä¸‹å•æ—¥æœŸ])="&day(now())&"  "&yh&"  GROUP BY åº—é“º"
 set rs=conn.execute(sql)
 if not rs.eof then
 	Array_str=rs.GetRows()
 	for i=0 to UBound(Array_str,2)
-		response.Write "¡¾"&Array_str(0,i)&"¡¿ÓĞ <b class='bigfont'>"&Array_str(1,i)&"</b> ¸ö¶©µ¥<br>"
+		response.Write "ã€"&Array_str(0,i)&"ã€‘æœ‰ <b class='bigfont'>"&Array_str(1,i)&"</b> ä¸ªè®¢å•<br>"
 	next
 else
-	response.Write "<span class=explain>ÎŞÏàÓ¦¶©µ¥¼ÇÂ¼</span>"
+	response.Write "<span class=explain>æ— ç›¸åº”è®¢å•è®°å½•</span>"
 end if
 closers(rs)
 %></td></tr>
 </table>
 
 <table class="conf_table">
-<tr><td><strong class="them_c">·¢ÉúµÄÍË»»»õ¶©µ¥</strong></td></tr>
+<tr><td><strong class="them_c">å‘ç”Ÿçš„é€€æ¢è´§è®¢å•</strong></td></tr>
 <tr><td nowrap="nowrap" style="padding-right:0px"><%
-set rs=conn.execute("select (select µêÆÌÃû³Æ from µêÆÌÃû³Æ where id=ÏúÊÛ¶©µ¥.µêÆÌ) as µêÆÌÃû³Æ,count(0),µêÆÌ from ÏúÊÛ¶©µ¥ where (¶©µ¥²½Öè>=4) "&yh&" group by µêÆÌ")
+set rs=conn.execute("select (select åº—é“ºåç§° from åº—é“ºåç§° where id=é”€å”®è®¢å•.åº—é“º) as åº—é“ºåç§°,count(0),åº—é“º from é”€å”®è®¢å• where (è®¢å•æ­¥éª¤>=4) "&yh&" group by åº—é“º")
 if not rs.eof then
 	Array_str=rs.GetRows()
 	for i=0 to UBound(Array_str,2)
-		response.Write "¡¾"&Array_str(0,i)&"¡¿ÓĞ <span class='bigfont b'>"&Array_str(1,i)&"</span> ¸öÍË»»»õ¶©µ¥£¡ <br>"
+		response.Write "ã€"&Array_str(0,i)&"ã€‘æœ‰ <span class='bigfont b'>"&Array_str(1,i)&"</span> ä¸ªé€€æ¢è´§è®¢å•ï¼ <br>"
 	next	
 else
-	response.Write "<span class=explain>ÎŞÏàÓ¦¶©µ¥¼ÇÂ¼</span>"
+	response.Write "<span class=explain>æ— ç›¸åº”è®¢å•è®°å½•</span>"
 end if
 closers(rs)
 %>
@@ -81,24 +81,24 @@ closers(rs)
 </table>
 
 <table class="conf_table">
-<tr><td><strong class="them_c">µÈ´ıÈ·ÈÏµÄÍË·µ¼ş</strong></td></tr>
+<tr><td><strong class="them_c">ç­‰å¾…ç¡®è®¤çš„é€€è¿”ä»¶</strong></td></tr>
 <tr><td nowrap="nowrap" style="padding-right:0px;">
 <%
 sql="select "&_
-" (select µêÆÌÃû³Æ from µêÆÌÃû³Æ where id=temp.µêÆÌ), "&_
+" (select åº—é“ºåç§° from åº—é“ºåç§° where id=temp.åº—é“º), "&_
 " count(0), "&_
-" max(ÊÕµ½·µ¼şÈÕÆÚ) "&_
-" from (select (select µêÆÌ from ÏúÊÛ¶©µ¥ where ddid=·µ¼ş.ddid) as µêÆÌ,ÊÕµ½·µ¼şÈÕÆÚ from ·µ¼ş where ¶©µ¥È·ÈÏ=0 ) as temp "&_
-" group by µêÆÌ order by  max(ÊÕµ½·µ¼şÈÕÆÚ) desc "
+" max(æ”¶åˆ°è¿”ä»¶æ—¥æœŸ) "&_
+" from (select (select åº—é“º from é”€å”®è®¢å• where ddid=è¿”ä»¶.ddid) as åº—é“º,æ”¶åˆ°è¿”ä»¶æ—¥æœŸ from è¿”ä»¶ where è®¢å•ç¡®è®¤=0 ) as temp "&_
+" group by åº—é“º order by  max(æ”¶åˆ°è¿”ä»¶æ—¥æœŸ) desc "
 'response.Write sql
 set rs=conn.execute(sql)
 if not rs.eof then
 	Array_str=rs.GetRows()
 	for i=0 to UBound(Array_str,2)
-		response.Write "¡¾"&Array_str(0,i)&"¡¿ÓĞ <span class='bigfont b'>"&Array_str(1,i)&"</span> <span style='color:#FF3300'>¸öÍË·µ¼ş´ıÈ·ÈÏ.. </span><br>"
+		response.Write "ã€"&Array_str(0,i)&"ã€‘æœ‰ <span class='bigfont b'>"&Array_str(1,i)&"</span> <span style='color:#FF3300'>ä¸ªé€€è¿”ä»¶å¾…ç¡®è®¤.. </span><br>"
 	next	
 else
-	response.Write "<span class=explain>ÎŞµÈ´ıÈ·ÈÏµÄÍË·µ¼ş</span>"
+	response.Write "<span class=explain>æ— ç­‰å¾…ç¡®è®¤çš„é€€è¿”ä»¶</span>"
 end if
 closers(rs)
 %>
@@ -110,16 +110,16 @@ closers(rs)
 
 <div class="indexstate">
 <table class="conf_table">
-<tr><td><strong class="them_c">µÈ´ı³ö¿âµÄ¶©µ¥</strong></td></tr>
+<tr><td><strong class="them_c">ç­‰å¾…å‡ºåº“çš„è®¢å•</strong></td></tr>
 <tr><td nowrap="nowrap"><%
-set rs=conn.execute("select (select µêÆÌÃû³Æ from µêÆÌÃû³Æ where id=ÏúÊÛ¶©µ¥.µêÆÌ) as µêÆÌÃû³Æ,count(0),µêÆÌ from ÏúÊÛ¶©µ¥ where ¶©µ¥×´Ì¬=1 and ¶©µ¥²½Öè=1 "&yh&" group by µêÆÌ")
+set rs=conn.execute("select (select åº—é“ºåç§° from åº—é“ºåç§° where id=é”€å”®è®¢å•.åº—é“º) as åº—é“ºåç§°,count(0),åº—é“º from é”€å”®è®¢å• where è®¢å•çŠ¶æ€=1 and è®¢å•æ­¥éª¤=1 "&yh&" group by åº—é“º")
 if not rs.eof then
 	Array_str=rs.GetRows()
 	for i=0 to UBound(Array_str,2)
-		response.Write "¡¾"&Array_str(0,i)&"¡¿ÓĞ <span class='bigfont b'>"&Array_str(1,i)&"</span> ¸ö¶©µ¥Åä»õÖĞ.. <br>"
+		response.Write "ã€"&Array_str(0,i)&"ã€‘æœ‰ <span class='bigfont b'>"&Array_str(1,i)&"</span> ä¸ªè®¢å•é…è´§ä¸­.. <br>"
 	next
 else
-	response.Write "<span class=explain>ÎŞÏàÓ¦¶©µ¥¼ÇÂ¼</span>"
+	response.Write "<span class=explain>æ— ç›¸åº”è®¢å•è®°å½•</span>"
 end if
 closers(rs)
 %>
@@ -127,16 +127,16 @@ closers(rs)
 </table>
 
 <table class="conf_table">
-<tr><td><strong class="them_c">µÈ´ı·¢»õµÄ¶©µ¥</strong></td></tr>
+<tr><td><strong class="them_c">ç­‰å¾…å‘è´§çš„è®¢å•</strong></td></tr>
 <tr><td nowrap="nowrap"><%
-set rs=conn.execute("select (select µêÆÌÃû³Æ from µêÆÌÃû³Æ where id=ÏúÊÛ¶©µ¥.µêÆÌ) as µêÆÌÃû³Æ,count(0),µêÆÌ from ÏúÊÛ¶©µ¥ where ¶©µ¥×´Ì¬=1 and ¶©µ¥²½Öè=2 "&yh&" group by µêÆÌ")
+set rs=conn.execute("select (select åº—é“ºåç§° from åº—é“ºåç§° where id=é”€å”®è®¢å•.åº—é“º) as åº—é“ºåç§°,count(0),åº—é“º from é”€å”®è®¢å• where è®¢å•çŠ¶æ€=1 and è®¢å•æ­¥éª¤=2 "&yh&" group by åº—é“º")
 if not rs.eof then
 	Array_str=rs.GetRows()
 	for i=0 to UBound(Array_str,2)
-		response.Write "¡¾"&Array_str(0,i)&"¡¿ÓĞ <span class='bigfont b'>"&Array_str(1,i)&"</span> ¸ö¶©µ¥´ı·¢»õ.. <br>"
+		response.Write "ã€"&Array_str(0,i)&"ã€‘æœ‰ <span class='bigfont b'>"&Array_str(1,i)&"</span> ä¸ªè®¢å•å¾…å‘è´§.. <br>"
 	next
 else
-	response.Write "<span class=explain>ÎŞÏàÓ¦¶©µ¥¼ÇÂ¼</span>"
+	response.Write "<span class=explain>æ— ç›¸åº”è®¢å•è®°å½•</span>"
 end if
 closers(rs)
 %>
@@ -148,11 +148,11 @@ closers(rs)
 <div class="indexstate">
 <table class="conf_table">
 <tr>
-  <td><strong class="them_c">¼´½«È±»õµÄ²¿·ÖÉÌÆ·</strong></td></tr>
+  <td><strong class="them_c">å³å°†ç¼ºè´§çš„éƒ¨åˆ†å•†å“</strong></td></tr>
 <tr><td nowrap="nowrap">
 <%
-fazhi=conn.execute("select fazhi from ÉèÖÃ")(0)
-set rs=conn.execute("select top 5 (select ÉÌÆ·Ãû³Æ from ÉÌÆ·¿â where ¿â´æ.ÉÏ¼Ü±àºÅ=ÉÏ¼Ü±àºÅ) as ÉÌÆ·Ãû³Æ,sum(¿â´æÊ£Óà) as ¿â´æÊ£Óà,(select ·ÖÀàµ¥Î» from ÉÌÆ··ÖÀà where id=max(¿â´æ.·ÖÀàid)) as ·ÖÀàµ¥Î» from ¿â´æ group by ÉÏ¼Ü±àºÅ having sum(¿â´æÊ£Óà)<="&fazhi&" order by ¿â´æÊ£Óà")
+fazhi=conn.execute("select fazhi from è®¾ç½®")(0)
+set rs=conn.execute("select top 5 (select å•†å“åç§° from å•†å“åº“ where åº“å­˜.ä¸Šæ¶ç¼–å·=ä¸Šæ¶ç¼–å·) as å•†å“åç§°,sum(åº“å­˜å‰©ä½™) as åº“å­˜å‰©ä½™,(select åˆ†ç±»å•ä½ from å•†å“åˆ†ç±» where id=max(åº“å­˜.åˆ†ç±»id)) as åˆ†ç±»å•ä½ from åº“å­˜ group by ä¸Šæ¶ç¼–å· having sum(åº“å­˜å‰©ä½™)<="&fazhi&" order by åº“å­˜å‰©ä½™")
 if not rs.eof then
 	Array_str=rs.GetRows()
 	for i=0 to UBound(Array_str,2)
@@ -162,7 +162,7 @@ if not rs.eof then
 	next
 	response.Write "... ... ..."	
 else
-	response.Write "<span class=explain>ÎŞÈ±Á¿ĞÅÏ¢</span>"
+	response.Write "<span class=explain>æ— ç¼ºé‡ä¿¡æ¯</span>"
 end if
 closers(rs)
 %>
@@ -170,16 +170,16 @@ closers(rs)
 </div>
 
 <%
-sqllist=" select top 20 cast(month(ÏÂµ¥ÈÕÆÚ) as varchar)+'-'+cast(day(ÏÂµ¥ÈÕÆÚ) as varchar)+'',count(0),max(ÏÂµ¥ÈÕÆÚ) from Ïú±íÊı¾İ where datediff(day,ÏÂµ¥ÈÕÆÚ,getdate())<=20 group by cast(month(ÏÂµ¥ÈÕÆÚ) as varchar)+'-'+cast(day(ÏÂµ¥ÈÕÆÚ) as varchar)+'' order by max(ÏÂµ¥ÈÕÆÚ) "
+sqllist=" select top 20 cast(month(ä¸‹å•æ—¥æœŸ) as varchar)+'-'+cast(day(ä¸‹å•æ—¥æœŸ) as varchar)+'',count(0),max(ä¸‹å•æ—¥æœŸ) from é”€è¡¨æ•°æ® where datediff(day,ä¸‹å•æ—¥æœŸ,getdate())<=20 group by cast(month(ä¸‹å•æ—¥æœŸ) as varchar)+'-'+cast(day(ä¸‹å•æ—¥æœŸ) as varchar)+'' order by max(ä¸‹å•æ—¥æœŸ) "
 set rs=conn.execute(sqllist)
 if not rs.eof then
 	Array_str=rs.GetRows()
 	for i=0 to UBound(Array_str,2)
 		namestr=Array_str(0,i)&""
 		namestr=right(namestr,len(namestr)-InStr(namestr,"-"))
-		tempxml=tempxml+"<set name='"&namestr&"ÈÕ' value='"&Array_str(1,i)&"' />"
-		'randomize  'ÑİÊ¾ÓÃµÄ	
-		'tempxml=tempxml+"<set name='"&namestr&"ÈÕ' value='"&Array_str(1,i)&""&int(rnd*36)&"' />" 'ÑİÊ¾ÓÃµÄ	
+		tempxml=tempxml+"<set name='"&namestr&"æ—¥' value='"&Array_str(1,i)&"' />"
+		'randomize  'æ¼”ç¤ºç”¨çš„	
+		'tempxml=tempxml+"<set name='"&namestr&"æ—¥' value='"&Array_str(1,i)&""&int(rnd*36)&"' />" 'æ¼”ç¤ºç”¨çš„	
 	next
 	xmldata=tempxml
 end if
@@ -189,7 +189,7 @@ closeconn()
 %>
 
 <div class="indexstate" style="padding-left:27px; margin-top:10px; clear:both;position:relative;">
-<div class="them_c" style="padding:15px 0px 10px 6px;"><b>½ü20ÌìÄÚ¶©µ¥Á¿ÇúÏß</b></div>
+<div class="them_c" style="padding:15px 0px 10px 6px;"><b>è¿‘20å¤©å†…è®¢å•é‡æ›²çº¿</b></div>
 <div style="position:absolute; top:30px; height:120px; width:810px;filter:alpha(opacity=0);opacity:0.0; "><img src="images/charts.jpg" /></div>
 <div id="chartdiv"></div>
 </div>
@@ -197,7 +197,7 @@ closeconn()
 <script>
 var tttt="<graph chartTopMargin='0' chartRightMargin='15' chartLeftMargin='10' chartBottomMargin='0' bgColor='#ffffff' showBorder='0' canvasBorderThickness='1' canvasBorderColor='#cccccc'   lineThickness='2' baseFontSize='12' showYAxisValues='0' animation='1' decimalPrecision='0' yAxisMaxValue='1' formatNumberScale='0' ><%= xmldata %></graph>";
 var chart1 = new FusionCharts("js/fusioncharts.com.Charts/Line.swf", "chart1Id", "800", "110", "0", "1");
-chart1.addParam("wmode","Opaque") //²»´¦ÓÚ×îÉÏ²ã
+chart1.addParam("wmode","Opaque") //ä¸å¤„äºæœ€ä¸Šå±‚
 chart1.setDataXML(tttt);
 chart1.render("chartdiv");
 </script>
